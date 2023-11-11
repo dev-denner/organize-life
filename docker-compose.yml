@@ -1,0 +1,15 @@
+version: "3.1"
+
+services:
+
+  database:
+    image: postgres:10.17
+    environment:
+      - "POSTGRES_USER=postgres"
+      - "POSTGRES_PASSWORD=postgres"
+      - "POSTGRES_DB=organize_life"
+    ports: [ 5432:5432 ]
+    volumes:
+      - pg-data:/var/lib/postgresql/data
+volumes:
+  pg-data:
