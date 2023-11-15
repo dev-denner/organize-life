@@ -12,5 +12,5 @@ export interface ISuppliers {
   created_by: number;
   update_in?: Date;
   last_changed_by?: number;
-  purchases: IPurchases[]
+  purchases?: IPurchases[]
 }

@@ -14,6 +14,6 @@ export interface IPurchases {
   created_by: number;
   update_in?: Date;
   last_changed_by?: number;
-  movements: IMovements[];
+  movements?: IMovements[];
   purchase_items: IPurchaseItems[];
 }

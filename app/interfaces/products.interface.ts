@@ -10,5 +10,5 @@ export interface IProducts {
   created_by: number;
   update_in?: Date;
   last_changed_by?: number;
-  purchase_items: IPurchaseItems[];
+  purchase_items?: IPurchaseItems[];
 }
