@@ -42,7 +42,8 @@ model categories {
   id              Int       @id @default(autoincrement())
   external_code   String
   name            String
-  parent_id       Int?
+  code            String
+  parent_code     String?
   create_in       DateTime  @default(now())
   created_by      Int?
   update_in       DateTime?
@@ -51,7 +52,7 @@ model categories {
 
 model movements {
   id              Int        @id @default(autoincrement())
-  external_code   Int
+  external_code   String
   account_id      Int
   purchase_id     Int
   description     String
@@ -83,7 +84,7 @@ model products {
 
 model purchases {
   id                   Int              @id @default(autoincrement())
-  external_code        Int
+  external_code        String
   supplier_id          Int?
   number_installments  Int
   full_amount_discount Int?
@@ -103,7 +104,7 @@ model purchases {
 
 model purchase_items {
   id              Int        @id @default(autoincrement())
-  external_code   Int
+  external_code   String
   purchase_id     Int
   product_id      Int?
   description     String
@@ -125,14 +126,14 @@ model purchase_items {
 }
 
 model suppliers {
-  id              Int              @id @default(autoincrement())
+  id              Int         @id @default(autoincrement())
   external_code   String
   business_name   String
   commercial_name String?
   cpf_cnpj        String?
   address         String?
   uf              String?
-  create_in       DateTime         @default(now())
+  create_in       DateTime    @default(now())
   created_by      Int?
   update_in       DateTime?
   last_changed_by Int?
