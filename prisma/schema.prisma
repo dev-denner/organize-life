@@ -16,9 +16,9 @@ model accounts {
   name            String
   acronym         String
   type            String
-  create_in       DateTime    @default(now())
+  create_at       DateTime    @default(now())
   created_by      Int?
-  update_in       DateTime?
+  update_at       DateTime?   @updatedAt
   last_changed_by Int?
   movements       movements[]
   users           users?      @relation(fields: [user_id], references: [id])
@@ -31,9 +31,9 @@ model users {
   external_code   String
   name            String
   email           String
-  create_in       DateTime   @default(now())
+  create_at       DateTime   @default(now())
   created_by      Int?
-  update_in       DateTime?
+  update_at       DateTime?  @updatedAt
   last_changed_by Int?
   accounts        accounts[]
 }
@@ -44,9 +44,9 @@ model categories {
   name            String
   code            String
   parent_code     String?
-  create_in       DateTime  @default(now())
+  create_at       DateTime  @default(now())
   created_by      Int?
-  update_in       DateTime?
+  update_at       DateTime? @updatedAt
   last_changed_by Int?
 }
 
@@ -58,9 +58,9 @@ model movements {
   description     String
   value           Int
   date_time       DateTime
-  create_in       DateTime   @default(now())
+  create_at       DateTime   @default(now())
   created_by      Int?
-  update_in       DateTime?
+  update_at       DateTime?  @updatedAt
   last_changed_by Int?
   account         accounts?  @relation(fields: [account_id], references: [id])
   purchase        purchases? @relation(fields: [purchase_id], references: [id])
@@ -75,9 +75,9 @@ model products {
   description     String
   default_unit    String
   category_id     Int?
-  create_in       DateTime         @default(now())
+  create_at       DateTime         @default(now())
   created_by      Int?
-  update_in       DateTime?
+  update_at       DateTime?        @updatedAt
   last_changed_by Int?
   purchase_items  purchase_items[]
 }
@@ -91,9 +91,9 @@ model purchases {
   discount_value       Int?
   amount_charged       Int
   date_time            DateTime
-  create_in            DateTime         @default(now())
+  create_at            DateTime         @default(now())
   created_by           Int?
-  update_in            DateTime?
+  update_at            DateTime?
   last_changed_by      Int?
   movements            movements[]
   purchase_items       purchase_items[]
@@ -114,9 +114,9 @@ model purchase_items {
   unitary_value   Int
   total_amount    Int
   discount        Int?
-  create_in       DateTime   @default(now())
+  create_at       DateTime   @default(now())
   created_by      Int?
-  update_in       DateTime?
+  update_at       DateTime?  @updatedAt
   last_changed_by Int?
   purchase        purchases? @relation(fields: [purchase_id], references: [id])
   product         products?  @relation(fields: [product_id], references: [id])
@@ -133,9 +133,9 @@ model suppliers {
   cpf_cnpj        String?
   address         String?
   uf              String?
-  create_in       DateTime    @default(now())
+  create_at       DateTime    @default(now())
   created_by      Int?
-  update_in       DateTime?
+  update_at       DateTime?   @updatedAt
   last_changed_by Int?
   purchases       purchases[]
 }
